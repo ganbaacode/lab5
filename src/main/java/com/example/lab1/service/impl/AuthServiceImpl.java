@@ -6,6 +6,7 @@ import com.example.lab1.entity.dto.response.LoginResponse;
 import com.example.lab1.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -14,29 +15,30 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
 @Slf4j
-public class AuthServiceImpl implements AuthService {
-
+@RequiredArgsConstructor
+public class AuthServiceImpl {
 
     private final AuthenticationManager authenticationManager;
     private final UserDetailsService userDetailsService;
     private final JwtUtil jwtUtil;
-    @Override
+
+
+//    @Override
     public LoginResponse login(LoginRequest loginRequest) {
-        try {
-            var result = authenticationManager.authenticate(
+         //try {
+           authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(loginRequest.getEmail(),
                             loginRequest.getPassword())
             );
-        } catch (BadCredentialsException e) {
-            log.info("Bad Credentials");
-        }
+        // } catch (BadCredentialsException e) {
+         //   log.info("Bad Credentials");
+        // }
 
-        final UserDetails userDetails = userDetailsService
-                .loadUserByUsername(loginRequest.getEmail());
+//        final UserDetails userDetails = userDetailsService
+//                .loadUserByUsername(loginRequest.getEmail());
 
-        final String accessToken = jwtUtil.generateToken(userDetails);
+        final String accessToken = jwtUtil.generateToken(loginRequest.getEmail());
         var loginResponse = new LoginResponse(accessToken);
         return loginResponse;
     }

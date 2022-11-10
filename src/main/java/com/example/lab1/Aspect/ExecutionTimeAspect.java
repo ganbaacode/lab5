@@ -1,9 +1,7 @@
 package com.example.lab1.Aspect;
 
 import com.example.lab1.entity.Logger;
-import com.example.lab1.repo.LoggerRepo;
 import com.example.lab1.service.LoggerService;
-import com.example.lab1.service.UserService;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -11,10 +9,7 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Aspect
 @Component

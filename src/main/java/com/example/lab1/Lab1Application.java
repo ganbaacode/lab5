@@ -17,4 +17,5 @@ public class Lab1Application {
 		return new ModelMapper();
 	}
 
+
 }

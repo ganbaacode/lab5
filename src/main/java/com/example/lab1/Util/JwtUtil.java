@@ -1,9 +1,10 @@
 package com.example.lab1.Util;
 
 
+import io.jsonwebtoken.*;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
-import io.jsonwebtoken.*;
+
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -43,9 +44,9 @@ public class JwtUtil {
     }
 
 
-    public String generateToken(UserDetails userDetails) {
+    public String generateToken(String email) {
         Map<String, Object> claims = new HashMap<>();
-        return doGenerateToken(claims, userDetails.getUsername());
+        return doGenerateToken(claims, email);
     }
 
     public String doGenerateToken(Map<String, Object> claims, String subject) {

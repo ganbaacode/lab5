@@ -26,7 +26,7 @@ public class User {
     @JoinColumn(name = "id_user")
     private List<Post> posts;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinColumn
     private List<Role> roles;
 
