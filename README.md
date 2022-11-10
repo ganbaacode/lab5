@@ -1,37 +1,27 @@
 # CS545-lab3
 
-LAB 3
+LAB 5
+CS545 – Authentication (JWT)
  
 
-This lab you will continue your previous lab that contains the User and Post and entities. You will be adding another entity with similar functionalities based on the following:
+Based on your previous lab, you will add authentication to all actions that were previously made. 
 
-public class Comment {
+There will be two roles (USER, ADMIN). The ADMIN should access all the pages that a user can access plus an /admin path (you should add this path).
 
-    long id;
-    String name;
+The User should access all paths except the /admin path. 
 
-}
+You will be mapping the authentication with the JPA database in your project. There should be a login path /authenticate where a user enters his/her credentials. If the user provides valid credentials, it should generate a token. 
 
-1-	Make a domain model using the domain model above.
-2-	Make a repository and database that will hold the Comments. 
-3-	Make a service layer that will inject the repository.
-4-	Make an ORM relation between the Post and Comment entities, where a Post holds a collection of Comments. Create it using JoinColumn
-5-	Make it possible to add a comment that will be associated with its post.
-6-	Cascade all the operations from the User to the Posts and Posts to the comments. So, if you delete a User, it should delete all related data. (Delete a User to verify)
-7-	Make a query that will retrieve all the users that have more than (n) posts.
-8-	Make a query that will find all the posts that match a given title. 
+Note: “In this assignment you will be manually copying the token to the authentication header when using postman or any other alternative.”
+
+
+Optional:
+
+When a user makes a post, it should read the user information and when it saves the post, it will also store the user that made that post (without passing a userId), it should be extracted from the authenticated user.  
 
 
 
 
-
-Optional
-
-9-	Make a query that will find the users that made posts within a given title 
-10-	Make it possible to navigate from your user to a post, then to a comment like the following example: localhost:8080/api/v1/users/111/posts/1/comments/1
-After hitting this URI, it should give us the comment with id 1 in the post with id 1 for the user with id 111
- 
-
-
-Make sure you execute all these requests using postman and follow best practices and conventions.. 
+You may refer to the demo in the link below to integrate the JWT to your project. 
+https://github.com/muhyidean/spring-security-1.git
 
